@@ -125,10 +125,6 @@ class TestOutput(unittest.TestCase):
         output_handler = Output(field, True)
         solution = output_handler.get_solution(list(Solver(
             Instance(field, True)).solve())[0])
-
-        # def space(length):
-        #     return ' ' * length
-
         right = '  \\ '
         left = '/   '
         horizontal = '---'
@@ -153,14 +149,6 @@ class TestOutput(unittest.TestCase):
         output_handler = Output(field, False)
         solution = output_handler.get_solution(list(Solver(
             Instance(field, False)).solve())[0])
-
-        # def space(length):
-        #     return ' ' * length
-
-        # 4 3
-        # 1 * * 1
-        # 2 * 2 3
-        # 3 * * *
         vertical = '|   '
         horizontal = '---'
         expected_output = [['2', space(3), '1', horizontal, '*', space(3)],

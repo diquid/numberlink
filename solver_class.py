@@ -89,6 +89,7 @@ class Solver:
 
         def condition(v):
             return v in instance.numbers and node.mate[v] != v or node.mate[v] in [0, self.get_opposite(v, node.edge)]
+
         return pairs <= union and pairs not in instance.pairs or any(condition(v) for v in node.edge)
 
     @staticmethod
