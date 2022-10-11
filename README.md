@@ -13,7 +13,7 @@ Python 3.8
 На вход подается текстовый файл с головоломкой, примеры полей можно найти в папке input_examples
 
 Пример запуска:
-`python main.py input_examples/field_4.txt`
+`python main.py tests/input_examples/field_4.txt`
 
 На выходе получаем решение головоломки
 
