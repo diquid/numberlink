@@ -1,6 +1,10 @@
 import argparse
 from field_class import *
 import math
+import sys
+
+
+sys.tracebacklimit = 0
 
 
 class Input:

@@ -1,5 +1,8 @@
+import sys
 from graph_class import *
 
+
+sys.tracebacklimit = 0
 
 class Instance:
     def __init__(self, field, is_hexagonal):
