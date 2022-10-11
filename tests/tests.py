@@ -1,14 +1,9 @@
-import os
-import sys
 import unittest
+from pathlib import Path
 from instance_class import *
 from solver_class import *
 from input_class import *
 from output_class import *
-
-
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                             os.path.pardir))
 
 
 class TestInstanceGeneration(unittest.TestCase):
@@ -34,7 +29,7 @@ class TestSolver(unittest.TestCase):
     def test_solve_hexagonal(self):
         input_handler = Input()
         field = input_handler.get_field(
-            'C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_6_hex.txt',
+            Path.cwd() / 'input_examples' / 'field_6_hex.txt',
             True)
         instance = Instance(field, True)
         solver = Solver(instance)
@@ -44,7 +39,7 @@ class TestSolver(unittest.TestCase):
     def test_solve_rectangle(self):
         input_handler = Input()
         field = input_handler.get_field(
-            'C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_3.txt',
+            Path.cwd() / 'input_examples' / 'field_3.txt',
             False)
         instance = Instance(field, False)
         solver = Solver(instance)
@@ -54,7 +49,7 @@ class TestSolver(unittest.TestCase):
     def test_no_solutions_hexagonal(self):
         input_handler = Input()
         field = input_handler.get_field(
-            'C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_7_hex_wrong.txt',
+            Path.cwd() / 'input_examples' / 'field_7_hex_wrong.txt',
             True)
         instance = Instance(field, True)
         solver = Solver(instance)
@@ -64,7 +59,7 @@ class TestSolver(unittest.TestCase):
     def test_no_solutions_rectangle(self):
         input_handler = Input()
         field = input_handler.get_field(
-            'C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_5_wrong.txt',
+            Path.cwd() / 'input_examples' / 'field_5_wrong.txt',
             False)
         instance = Instance(field, False)
         solver = Solver(instance)
@@ -81,7 +76,8 @@ class TestFieldParser(unittest.TestCase):
 
     def test_params_error_rectangle(self):
         context = self.setup_test('2', '1 2', '1 2')
-        self.assertTrue('Ожидалось два положительных целых числа через пробел - ширина и высота поля' in str(context.exception))
+        self.assertTrue(
+            'Ожидалось два положительных целых числа через пробел - ширина и высота поля' in str(context.exception))
 
     def test_width_error_long_hexagonal(self):
         context = self.setup_test('3', '1 2', '* * * *', '1 2', is_hexagonal=True)
@@ -121,7 +117,9 @@ def space(length):
 
 class TestOutput(unittest.TestCase):
     def test_output_hexagonal(self):
-        field = Input().get_field('C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_8_hex.txt', True)
+        field = Input().get_field(
+            Path.cwd() / 'input_examples' / 'field_8_hex.txt',
+            True)
         output_handler = Output(field, True)
         solution = output_handler.get_solution(list(Solver(
             Instance(field, True)).solve())[0])
@@ -145,7 +143,9 @@ class TestOutput(unittest.TestCase):
         self.assertEqual(expected_output, solution)
 
     def test_output_rectangle(self):
-        field = Input().get_field('C:/Users/acer/OneDrive/Рабочий стол/urfu/python task/numberlink_task/numberlink/input_examples/field_9.txt', False)
+        field = Input().get_field(
+            Path.cwd() / 'input_examples' / 'field_9.txt',
+            False)
         output_handler = Output(field, False)
         solution = output_handler.get_solution(list(Solver(
             Instance(field, False)).solve())[0])
