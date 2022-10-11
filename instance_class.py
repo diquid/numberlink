@@ -94,5 +94,5 @@ class Instance:
     def extra_numbers_check(element, paired):
         if element in paired:
             raise ValueError(
-                'Нельзя решать головоломку,' 
+                'Нельзя решать головоломку,'
                 'когда на поле более двух одинаковых чисел')

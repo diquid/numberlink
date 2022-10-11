@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f96aafe-3df2-412a-9f47-e509c32a1b23" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/instance_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/output_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solver_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665506181317</updated>
       <workItem from="1665506182822" duration="2483000" />
-      <workItem from="1665508778690" duration="1139000" />
+      <workItem from="1665508778690" duration="1611000" />
     </task>
     <servers />
   </component>
