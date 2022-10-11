@@ -19,7 +19,8 @@ class Output:
                 line.append(self.get_horizontal_connection(i, j, solution))
                 if self.is_hexagonal:
                     next_line.append(
-                        self.get_diagonal_connection(i, j, solution, passed_middle))
+                        self.get_diagonal_connection(
+                            i, j, solution, passed_middle))
                 else:
                     next_line.append(
                         self.get_vertical_connection(i, j, solution))

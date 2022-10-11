@@ -13,7 +13,9 @@ class TestInstanceGeneration(unittest.TestCase):
                                    ['2', '*', '2'],
                                    ['*', '*', '*']])
             instance = Instance(field, False)
-        self.assertTrue('Нельзя решать головоломку, когда у некоторых чисел нет пары' in str(context.exception))
+        self.assertTrue(
+            'Нельзя решать головоломку, когда у некоторых чисел нет пары'
+            in str(context.exception))
 
     def test_excess_numbers_error(self):
         with self.assertRaises(Exception) as context:
@@ -22,7 +24,9 @@ class TestInstanceGeneration(unittest.TestCase):
                                    ['*', '*', '1']])
             instance = Instance(field, False)
         self.assertTrue(
-            'Нельзя решать головоломку, когда на поле более двух одинаковых чисел' in str(context.exception))
+            'Нельзя решать головоломку, '
+            'когда на поле более двух одинаковых чисел'
+            in str(context.exception))
 
 
 class TestSolver(unittest.TestCase):
@@ -71,29 +75,39 @@ class TestFieldParser(unittest.TestCase):
     input_handler = Input()
 
     def test_params_error_hexagonal(self):
-        context = self.setup_test('3 3', '1 2', '* * *', '1 2', is_hexagonal=True)
-        self.assertTrue('Ожидалось одно положительное целое число - высота 6-угольного поля' in str(context.exception))
+        context = self.setup_test('3 3', '1 2', '* * *', '1 2',
+                                  is_hexagonal=True)
+        self.assertTrue(
+            'Ожидалось одно положительное целое число - '
+            'высота 6-угольного поля' in str(context.exception))
 
     def test_params_error_rectangle(self):
         context = self.setup_test('2', '1 2', '1 2')
         self.assertTrue(
-            'Ожидалось два положительных целых числа через пробел - ширина и высота поля' in str(context.exception))
+            'Ожидалось два положительных целых числа через пробел - '
+            'ширина и высота поля' in str(context.exception))
 
     def test_width_error_long_hexagonal(self):
-        context = self.setup_test('3', '1 2', '* * * *', '1 2', is_hexagonal=True)
-        self.assertTrue('Количество символов больше ширины поля' in str(context.exception))
+        context = self.setup_test('3', '1 2', '* * * *', '1 2',
+                                  is_hexagonal=True)
+        self.assertTrue('Количество символов больше ширины поля'
+                        in str(context.exception))
 
     def test_width_error_small_hexagonal(self):
-        context = self.setup_test('3', '1 2', '* *', '1 2', is_hexagonal=True)
-        self.assertTrue('Количество символов меньше ширины поля' in str(context.exception))
+        context = self.setup_test('3', '1 2', '* *', '1 2',
+                                  is_hexagonal=True)
+        self.assertTrue('Количество символов меньше ширины поля'
+                        in str(context.exception))
 
     def test_width_error_long_rectangle(self):
         context = self.setup_test('2 2', '1 2', '1 2 *')
-        self.assertTrue('Количество символов больше ширины поля' in str(context.exception))
+        self.assertTrue('Количество символов больше ширины поля'
+                        in str(context.exception))
 
     def test_width_error_small_rectangle(self):
         context = self.setup_test('2 2', '1 2', '1')
-        self.assertTrue('Количество символов меньше ширины поля' in str(context.exception))
+        self.assertTrue('Количество символов меньше ширины поля'
+                        in str(context.exception))
 
     def setup_file(self, *lines):
         with open('test_file.txt', 'w') as test_file:

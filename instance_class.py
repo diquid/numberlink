@@ -4,6 +4,7 @@ from graph_class import *
 
 sys.tracebacklimit = 0
 
+
 class Instance:
     def __init__(self, field, is_hexagonal):
         self.is_hexagonal = is_hexagonal
@@ -86,9 +87,12 @@ class Instance:
     @staticmethod
     def no_pair_check(cur_pairs):
         if len(cur_pairs) > 0:
-            raise ValueError('Нельзя решать головоломку, когда у некоторых чисел нет пары')
+            raise ValueError(
+                'Нельзя решать головоломку, когда у некоторых чисел нет пары')
 
     @staticmethod
     def extra_numbers_check(element, paired):
         if element in paired:
-            raise ValueError('Нельзя решать головоломку, когда на поле более двух одинаковых чисел')
+            raise ValueError(
+                'Нельзя решать головоломку,' 
+                'когда на поле более двух одинаковых чисел')

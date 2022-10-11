@@ -22,7 +22,8 @@ class Input:
             field = []
             max_width = 2 + math.floor(height / 2)
             self.get_field_half(math.ceil(height / 2), file, 2, 1, field)
-            self.get_field_half(math.ceil(height / 2) - 1, file, max_width - 1, -1, field)
+            self.get_field_half(
+                math.ceil(height / 2) - 1, file, max_width - 1, -1, field)
             return Field((max_width, height), field)
 
     def get_field_half(self, num_of_lines, file, width, delta, field):
@@ -35,7 +36,9 @@ class Input:
     @staticmethod
     def check_params_hexagon(line):
         if len(line) > 1 or int(line[0]) <= 0:
-            raise ValueError('Ожидалось одно положительное целое число - высота 6-угольного поля')
+            raise ValueError(
+                'Ожидалось одно положительное целое число - '
+                'высота 6-угольного поля')
 
     def get_rectangle_field(self, file_name):
         with open(file_name) as file:
@@ -54,7 +57,9 @@ class Input:
     @staticmethod
     def check_params_rectangle(line):
         if len(line) < 2 or int(line[0]) <= 0 or int(line[1]) <= 0:
-            raise ValueError('Ожидалось два положительных целых числа через пробел - ширина и высота поля')
+            raise ValueError(
+                'Ожидалось два положительных целых числа через пробел - '
+                'ширина и высота поля')
 
     @staticmethod
     def check_line(line):

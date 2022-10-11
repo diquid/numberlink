@@ -17,8 +17,10 @@ class Solver:
             self.update_vertices(edge, vertices, edges)
             new_nodes = []
             for node in nodes:
-                node.add_zero_child(self.get_zero_child(node, vertices, next_edge))
-                node.add_one_child(self.get_one_child(node, vertices, next_edge))
+                node.add_zero_child(
+                    self.get_zero_child(node, vertices, next_edge))
+                node.add_one_child(
+                    self.get_one_child(node, vertices, next_edge))
                 self.get_new_nodes(node.zero_child, node.one_child, new_nodes)
             nodes = new_nodes
         return self.collect_solutions(root)
@@ -50,7 +52,8 @@ class Solver:
     @staticmethod
     def update_vertices(edge, vertices, edges):
         incident_vertices = set(itertools.chain(*edges))
-        edge_incident_vertices = [v for v in edge if v not in incident_vertices]
+        edge_incident_vertices = \
+            [v for v in edge if v not in incident_vertices]
         for v in edge_incident_vertices:
             vertices['active'].remove(v)
             vertices['not_active'].append(v)
@@ -59,7 +62,8 @@ class Solver:
     def is_zero_incompatible(node, instance, vertices):
         filtered = [v for v in node.edge if v not in vertices['active']]
         for v in filtered:
-            if node.mate[v] == v or v not in instance.numbers and node.mate[v] not in [0, v]:
+            if node.mate[v] == v or \
+                    v not in instance.numbers and node.mate[v] not in [0, v]:
                 return True
         return False
 
@@ -88,9 +92,11 @@ class Solver:
         pairs = {node.mate[v] for v in node.edge}
 
         def condition(v):
-            return v in instance.numbers and node.mate[v] != v or node.mate[v] in [0, self.get_opposite(v, node.edge)]
+            return v in instance.numbers and node.mate[v] != v or \
+                   node.mate[v] in [0, self.get_opposite(v, node.edge)]
 
-        return pairs <= union and pairs not in instance.pairs or any(condition(v) for v in node.edge)
+        return pairs <= union and pairs not in instance.pairs or \
+            any(condition(v) for v in node.edge)
 
     @staticmethod
     def get_opposite(vertice, edge):
